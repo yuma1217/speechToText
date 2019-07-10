@@ -1,13 +1,16 @@
 const path = require('path');
 const ffmpeg = require('fluent-ffmpeg');
 
-const m4aToFlac = (filePath) => {
+const audioToFlac = (filePath) => {
 
     console.log(filePath);
     const res = path.extname(filePath);
     let result = '';
-    if(res == '.m4a'){
+    if(res == '.m4a' || res == '.mp3'){
         result = filePath.replace(res, '');
+    }else{
+        console.log("拡張子が予期されたものではありません");
+        return;
     }
 
     result = result + '.flac';
@@ -21,4 +24,4 @@ const m4aToFlac = (filePath) => {
         .save(result)
 }
 
-module.exports.m4aToFlac = m4aToFlac;
+module.exports.audioToFlac = audioToFlac;
