@@ -42,6 +42,5 @@ const getFullPathWithFileType = (dir, fileType) => {
     return data;
 }
 
-var result = getFullPathWithFileType(process.cwd(), '.flac');
-
-console.log(result);
+module.exports.getFullPath = getFullPath;
+module.exports.getFullPathWithFileType = getFullPathWithFileType;
