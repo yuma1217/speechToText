@@ -3,7 +3,7 @@ const ffmpeg = require('fluent-ffmpeg');
 
 const audioToFlac = (filePath) => {
 
-    console.log(filePath);
+    // console.log(filePath);
     const res = path.extname(filePath);
     let result = '';
     if(res == '.m4a' || res == '.mp3'){
@@ -14,7 +14,7 @@ const audioToFlac = (filePath) => {
     }
 
     result = result + '.flac';
-    console.log(result);
+    // console.log(result);
 
     ffmpeg()
         .input(filePath)
