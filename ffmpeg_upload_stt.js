@@ -7,6 +7,7 @@ const bucketName = 'vr-communication';
 
 const speech = require('@google-cloud/speech');
 const speechClient = new speech.SpeechClient();
+const path = require('path');
 
 const flag = false;
 
@@ -65,8 +66,10 @@ function findFile(name){
     return true;
 }
 
+// 引数にfull pathを取る
 async function speechToText(name){
-    const gcsUri = 'gs://vr-communication/' + name + '.flac';
+    const baseName = path.basename(name);
+    const gcsUri = 'gs://vr-communication/' + baseName;
     const encoding = 'FLAC';
     const languageCode = 'ja-JP';
     const config = {
@@ -105,4 +108,6 @@ async function main(){
     console.log("done");
 }
 
-main().catch(console.error);
+
+module.exports.speechToText = speechToText;
+module.exports.uploadToStorage = uploadToStorage;
